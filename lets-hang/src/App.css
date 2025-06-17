@@ -15,6 +15,14 @@
     background-color: red;
 }
 
+.visible {
+    background-color: green;
+}
+
+.hidden {
+    display: none;
+}
+
 .logo {
     height: 6em;
     padding: 1.5em;

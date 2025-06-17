@@ -1,15 +1,21 @@
 import Letter from "./Letter";
 
-function LetterDisplay({ word }) {
-  const wordArray = word.split("");
-
-  return (
-    <section id="LettersBox">
-      {wordArray.map((letter) => (
-        <Letter letter={letter} key={letter} />
-      ))}
-    </section>
-  );
+function LetterDisplay({ word, letterCheck }) {
+    const wordArray = word.split("");
+    console.log(letterCheck);
+    return (
+        <section id="LettersBox">
+            {wordArray.map((letter, index) => (
+                <Letter
+                    letter={letter}
+                    key={index}
+                    className={
+                        letterCheck[index] ? "letter visible" : "letter hidden"
+                    }
+                />
+            ))}
+        </section>
+    );
 }
 
 export default LetterDisplay;

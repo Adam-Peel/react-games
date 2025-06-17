@@ -5,7 +5,7 @@ function Key({ letter, checkLetterInWord }) {
 
     function handleClick(letter) {
         const propLetter = letter.toLowerCase();
-        checkLetterInWord(letter);
+        checkLetterInWord(propLetter);
         setSelectStatus("selected");
     }
 
