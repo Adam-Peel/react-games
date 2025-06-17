@@ -1,7 +1,7 @@
 import LetterDisplay from "./LetterDisplay";
 
-function WordBox() {
-  return <LetterDisplay word="Slimey" />;
+function WordBox({ word }) {
+    return <LetterDisplay word={word} />;
 }
 
 export default WordBox;

@@ -1,12 +1,12 @@
-import Box from "./Block";
+import Box from "./Box";
 
-function HangingMan() {
-  return (
-    <div>
-      <Box />
-      <Box />
-    </div>
-  );
+function HangingMan({ badGuessCount }) {
+    const blockArray = [];
+    for (let i = 0; i < badGuessCount; i++) {
+        blockArray.push(<Box />);
+    }
+
+    return <div>{blockArray}</div>;
 }
 
 export default HangingMan;

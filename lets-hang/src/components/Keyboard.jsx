@@ -1,44 +1,44 @@
 import Key from "./Keys";
 import ResetButton from "./ResetButton";
 
-function Keyboard() {
-  return (
-    <div className="keyboard">
-      <section>
-        <Key letter={"Q"} />
-        <Key letter={"W"} />
-        <Key letter={"E"} />
-        <Key letter={"R"} />
-        <Key letter={"T"} />
-        <Key letter={"Y"} />
-        <Key letter={"U"} />
-        <Key letter={"I"} />
-        <Key letter={"O"} />
-        <Key letter={"P"} />
-        <br />
-        <Key letter={"A"} />
-        <Key letter={"S"} />
-        <Key letter={"D"} />
-        <Key letter={"F"} />
-        <Key letter={"G"} />
-        <Key letter={"H"} />
-        <Key letter={"J"} />
-        <Key letter={"K"} />
-        <Key letter={"L"} />
-        <br />
-        <Key letter={"Z"} />
-        <Key letter={"X"} />
-        <Key letter={"C"} />
-        <Key letter={"V"} />
-        <Key letter={"B"} />
-        <Key letter={"N"} />
-        <Key letter={"M"} />
-      </section>
-      <section>
-        <ResetButton />
-      </section>
-    </div>
-  );
+function Keyboard({ checkLetterInWord }) {
+    return (
+        <div className="keyboard">
+            <section>
+                <Key letter={"Q"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"W"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"E"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"R"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"T"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"Y"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"U"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"I"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"O"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"P"} checkLetterInWord={checkLetterInWord} />
+                <br />
+                <Key letter={"A"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"S"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"D"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"F"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"G"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"H"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"J"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"K"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"L"} checkLetterInWord={checkLetterInWord} />
+                <br />
+                <Key letter={"Z"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"X"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"C"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"V"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"B"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"N"} checkLetterInWord={checkLetterInWord} />
+                <Key letter={"M"} checkLetterInWord={checkLetterInWord} />
+            </section>
+            <section>
+                <ResetButton />
+            </section>
+        </div>
+    );
 }
 
 export default Keyboard;
