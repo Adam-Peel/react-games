@@ -3,7 +3,7 @@ import ResetButton from "./ResetButton";
 
 function Keyboard() {
   return (
-    <div classname="keyboard">
+    <div className="keyboard">
       <section>
         <Key letter={"Q"} />
         <Key letter={"W"} />
@@ -15,6 +15,7 @@ function Keyboard() {
         <Key letter={"I"} />
         <Key letter={"O"} />
         <Key letter={"P"} />
+        <br />
         <Key letter={"A"} />
         <Key letter={"S"} />
         <Key letter={"D"} />
@@ -24,6 +25,7 @@ function Keyboard() {
         <Key letter={"J"} />
         <Key letter={"K"} />
         <Key letter={"L"} />
+        <br />
         <Key letter={"Z"} />
         <Key letter={"X"} />
         <Key letter={"C"} />

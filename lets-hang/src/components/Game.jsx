@@ -1,5 +1,5 @@
 import HangingMan from "./HangingMan";
-import WordBox from "./WordDisplay";
+import WordBox from "./WordBox";
 import Keyboard from "./Keyboard";
 
 function GameBox() {
