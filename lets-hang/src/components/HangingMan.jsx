@@ -1,5 +1,12 @@
+import Box from "./Block";
+
 function HangingMan() {
-  return <p>Graphic Here buddy</p>;
+  return (
+    <div>
+      <Box />
+      <Box />
+    </div>
+  );
 }
 
 export default HangingMan;

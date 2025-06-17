@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+.box {
+  width: 50px;
+  width: 50px;
+  background-color: orange;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
