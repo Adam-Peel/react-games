@@ -1,7 +1,14 @@
 import LetterDisplay from "./LetterDisplay";
+import InfoBox from "./InfoBox";
 
-function WordBox({ word, letterCheck }) {
-    return <LetterDisplay word={word} letterCheck={letterCheck} />;
+function WordBox({ word, letterCheck, gameState }) {
+  console.log(gameState);
+  return (
+    <div>
+      <InfoBox gameState={gameState} />
+      <LetterDisplay word={word} letterCheck={letterCheck} />
+    </div>
+  );
 }
 
 export default WordBox;
