@@ -35,7 +35,7 @@ function GameBox() {
         //Game over point, handle end game
         // display correct word
         setGameOver(true);
-        setGameState("Game Over! The word was :" + word);
+        setGameState("Game Over! The word was: " + word);
         disableGameButtons();
       }
 
