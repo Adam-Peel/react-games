@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HangingMan from "./HangingMan";
 import WordBox from "./WordBox";
 import Keyboard from "./Keyboard";
@@ -12,6 +12,7 @@ function GameBox() {
   let [badGuessLimit, setBadGuessLimit] = useState(9);
   let [badGuessCount, setBadGuessCount] = useState(0);
   let [gameState, setGameState] = useState("Let's play");
+  let [gameOver, setGameOver] = useState(false);
 
   function checkLetterInWord(letter) {
     //If letter is not in word, add block to hangman
@@ -19,11 +20,12 @@ function GameBox() {
 
     if (!word.includes(letter)) {
       //bad letter, poor mr hangman
-      setBadGuessCount(++badGuessCount);
+      setBadGuessCount((prev) => prev + 1);
 
       if (badGuessCount === badGuessLimit) {
         //Game over point, handle end game
         // display correct word
+        setGameState("Game Over! The word was :" + word);
       }
 
       console.log("Bad Guess! Count = " + badGuessCount);
@@ -39,16 +41,19 @@ function GameBox() {
       setLetterCheck(letterCheckCopy);
     }
   }
-  if (!letterCheck.includes(false)) {
-    const buttons = document.getElementsByClassName("inputButton");
-    const buttonsArray = Array.from(buttons);
-    buttonsArray.forEach((button) => {
-      button.disabled = true;
-      button.classList.remove("selected");
-    });
-    // BUG - Cannot change state without crashing app
-    gameState = "You win!!";
-  }
+
+  useEffect(() => {
+    if (!letterCheck.includes(false)) {
+      setGameOver(true);
+      setGameState("You win!!");
+      const buttons = document.getElementsByClassName("inputButton");
+      const buttonsArray = Array.from(buttons);
+      buttonsArray.forEach((button) => {
+        button.disabled = true;
+        button.classList.remove("selected");
+      });
+    }
+  }, [letterCheck, gameOver]);
 
   return (
     <>
