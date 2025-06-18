@@ -14,6 +14,15 @@ function GameBox() {
   let [gameState, setGameState] = useState("Let's play");
   let [gameOver, setGameOver] = useState(false);
 
+  function disableGameButtons() {
+    const buttons = document.getElementsByClassName("inputButton");
+    const buttonsArray = Array.from(buttons);
+    buttonsArray.forEach((button) => {
+      button.disabled = true;
+      button.classList.remove("selected");
+    });
+  }
+
   function checkLetterInWord(letter) {
     //If letter is not in word, add block to hangman
     //If letter is in word, add correctly placed letter in word
@@ -25,7 +34,9 @@ function GameBox() {
       if (badGuessCount === badGuessLimit) {
         //Game over point, handle end game
         // display correct word
+        setGameOver(true);
         setGameState("Game Over! The word was :" + word);
+        disableGameButtons();
       }
 
       console.log("Bad Guess! Count = " + badGuessCount);
@@ -46,12 +57,7 @@ function GameBox() {
     if (!letterCheck.includes(false)) {
       setGameOver(true);
       setGameState("You win!!");
-      const buttons = document.getElementsByClassName("inputButton");
-      const buttonsArray = Array.from(buttons);
-      buttonsArray.forEach((button) => {
-        button.disabled = true;
-        button.classList.remove("selected");
-      });
+      disableGameButtons();
     }
   }, [letterCheck, gameOver]);
 
