@@ -23,6 +23,21 @@ function GameBox() {
     });
   }
 
+  function resetGame() {
+    setLetterCheck(Array(inputWord.length).fill(false));
+    setBadGuessCount(0);
+    setGameState("Let's play");
+    setGameOver(false);
+    const buttons = document.getElementsByClassName("inputButton");
+    const buttonsArray = Array.from(buttons);
+    buttonsArray.forEach((button) => {
+      button.disabled = false;
+      button.classList.remove("selected");
+      button.classList.remove("unselected");
+      button.classList.add("unselected");
+    });
+  }
+
   function checkLetterInWord(letter) {
     if (!word.includes(letter)) {
       //bad letter, poor mr hangman
@@ -65,6 +80,7 @@ function GameBox() {
       <Keyboard
         checkLetterInWord={checkLetterInWord}
         setGameState={setGameState}
+        resetGame={resetGame}
       />
     </>
   );

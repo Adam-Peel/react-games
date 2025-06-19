@@ -1,7 +1,7 @@
 import Key from "./Keys";
 import ResetButton from "./ResetButton";
 
-function Keyboard({ checkLetterInWord }) {
+function Keyboard({ checkLetterInWord, resetGame }) {
   return (
     <div className="keyboard">
       <section>
@@ -35,7 +35,9 @@ function Keyboard({ checkLetterInWord }) {
         <Key letter={"M"} checkLetterInWord={checkLetterInWord} />
       </section>
       <section>
-        <ResetButton />
+        <button className="resetButton" onClick={resetGame}>
+          Reset Game
+        </button>
       </section>
     </div>
   );
