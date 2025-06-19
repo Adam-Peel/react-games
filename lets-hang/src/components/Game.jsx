@@ -4,7 +4,7 @@ import WordBox from "./WordBox";
 import Keyboard from "./Keyboard";
 
 function GameBox() {
-  const inputWord = "SLIMEY";
+  const inputWord = "TAUTOLOGY";
   const word = inputWord.toLowerCase();
   const initialLetterCheck = Array(word.length).fill(false);
 
@@ -24,9 +24,6 @@ function GameBox() {
   }
 
   function checkLetterInWord(letter) {
-    //If letter is not in word, add block to hangman
-    //If letter is in word, add correctly placed letter in word
-
     if (!word.includes(letter)) {
       //bad letter, poor mr hangman
       setBadGuessCount((prev) => prev + 1);
@@ -65,7 +62,10 @@ function GameBox() {
     <>
       <HangingMan badGuessCount={badGuessCount} />
       <WordBox word={word} letterCheck={letterCheck} gameState={gameState} />
-      <Keyboard checkLetterInWord={checkLetterInWord} />
+      <Keyboard
+        checkLetterInWord={checkLetterInWord}
+        setGameState={setGameState}
+      />
     </>
   );
 }

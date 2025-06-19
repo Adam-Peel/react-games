@@ -2,7 +2,6 @@ import { useState } from "react";
 
 function Key({ letter, checkLetterInWord }) {
   const [selectStatus, setSelectStatus] = useState("unselected");
-
   const [buttonStatus, setButtonStatus] = useState(false);
 
   function handleClick(letter) {
