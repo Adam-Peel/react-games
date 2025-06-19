@@ -1,14 +1,12 @@
 import { useState } from "react";
 
 function Key({ letter, checkLetterInWord }) {
-  const [selectStatus, setSelectStatus] = useState("unselected");
-  const [buttonStatus, setButtonStatus] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   function handleClick(letter) {
     const propLetter = letter.toLowerCase();
     checkLetterInWord(propLetter);
-    setSelectStatus("selected");
-    setButtonStatus(true);
+    setIsDisabled(true);
   }
 
   return (
@@ -17,8 +15,8 @@ function Key({ letter, checkLetterInWord }) {
         handleClick(letter);
       }}
       id={letter}
-      className={selectStatus + " inputButton"}
-      disabled={buttonStatus}
+      className={"inputButton"}
+      disabled={isDisabled}
     >
       {letter}
     </button>

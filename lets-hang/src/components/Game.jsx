@@ -19,7 +19,6 @@ function GameBox() {
     const buttonsArray = Array.from(buttons);
     buttonsArray.forEach((button) => {
       button.disabled = true;
-      button.classList.remove("selected");
     });
   }
 
@@ -32,9 +31,6 @@ function GameBox() {
     const buttonsArray = Array.from(buttons);
     buttonsArray.forEach((button) => {
       button.disabled = false;
-      button.classList.remove("selected");
-      button.classList.remove("unselected");
-      button.classList.add("unselected");
     });
   }
 

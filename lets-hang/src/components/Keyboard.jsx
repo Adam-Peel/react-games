@@ -1,5 +1,4 @@
 import Key from "./Keys";
-import ResetButton from "./ResetButton";
 
 function Keyboard({ checkLetterInWord, resetGame }) {
   return (
