@@ -6,9 +6,11 @@ import Keyboard from "./Keyboard";
 function GameBox() {
   const inputWord = "TAUTOLOGY";
   const word = inputWord.toLowerCase();
-  const initialLetterCheck = Array(word.length).fill(false);
+  function initialLetterCheck() {
+    return Array(word.length).fill(false);
+  }
 
-  let [letterCheck, setLetterCheck] = useState(initialLetterCheck);
+  let [letterCheck, setLetterCheck] = useState(initialLetterCheck());
   let [badGuessLimit, setBadGuessLimit] = useState(9);
   let [badGuessCount, setBadGuessCount] = useState(0);
   let [gameState, setGameState] = useState("Let's play");
@@ -23,7 +25,7 @@ function GameBox() {
   }
 
   function resetGame() {
-    setLetterCheck(Array(inputWord.length).fill(false));
+    setLetterCheck(initialLetterCheck());
     setBadGuessCount(0);
     setGameState("Let's play");
     setGameOver(false);
@@ -73,11 +75,7 @@ function GameBox() {
     <>
       <HangingMan badGuessCount={badGuessCount} />
       <WordBox word={word} letterCheck={letterCheck} gameState={gameState} />
-      <Keyboard
-        checkLetterInWord={checkLetterInWord}
-        setGameState={setGameState}
-        resetGame={resetGame}
-      />
+      <Keyboard checkLetterInWord={checkLetterInWord} resetGame={resetGame} />
     </>
   );
 }

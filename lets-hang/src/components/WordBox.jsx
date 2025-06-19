@@ -2,7 +2,6 @@ import LetterDisplay from "./LetterDisplay";
 import InfoBox from "./InfoBox";
 
 function WordBox({ word, letterCheck, gameState }) {
-  console.log(gameState);
   return (
     <div>
       <InfoBox gameState={gameState} />
