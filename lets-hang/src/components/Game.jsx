@@ -14,7 +14,6 @@ function GameBox() {
   let [badGuessLimit, setBadGuessLimit] = useState(9);
   let [badGuessCount, setBadGuessCount] = useState(0);
   let [gameState, setGameState] = useState("Let's play");
-  let [gameOver, setGameOver] = useState(false);
 
   function disableGameButtons() {
     const buttons = document.getElementsByClassName("inputButton");
@@ -24,11 +23,42 @@ function GameBox() {
     });
   }
 
+  function checkLetterInWord(letter) {
+    if (!word.includes(letter)) {
+      //bad letter, poor mr hangman
+      setBadGuessCount((badGuessCount) => {
+        const newCount = badGuessCount + 1;
+        if (newCount === badGuessLimit) {
+          //Game over point, handle end gameover
+          // display correct word
+          setGameState("Game Over! The word was: " + word);
+          disableGameButtons();
+        }
+        return newCount;
+      });
+      return;
+    }
+    const letterCheckCopy = [...letterCheck];
+    for (let i = 0; i < word.length; i++) {
+      //loop through word, if index contains letter, update word visual
+      if (word[i] === letter) {
+        letterCheckCopy[i] = true;
+      }
+    }
+    setLetterCheck(letterCheckCopy);
+  }
+
+  useEffect(() => {
+    if (!letterCheck.includes(false)) {
+      setGameState("You win!!");
+      disableGameButtons();
+    }
+  }, [letterCheck]);
+
   function resetGame() {
     setLetterCheck(initialLetterCheck());
     setBadGuessCount(0);
     setGameState("Let's play");
-    setGameOver(false);
     const buttons = document.getElementsByClassName("inputButton");
     const buttonsArray = Array.from(buttons);
     buttonsArray.forEach((button) => {
@@ -36,46 +66,16 @@ function GameBox() {
     });
   }
 
-  function checkLetterInWord(letter) {
-    if (!word.includes(letter)) {
-      //bad letter, poor mr hangman
-      setBadGuessCount((prev) => prev + 1);
-
-      if (badGuessCount === badGuessLimit) {
-        //Game over point, handle end game
-        // display correct word
-        setGameOver(true);
-        setGameState("Game Over! The word was: " + word);
-        disableGameButtons();
-      }
-
-      console.log("Bad Guess! Count = " + badGuessCount);
-      return;
-    } else {
-      const letterCheckCopy = [...letterCheck];
-      for (let i = 0; i < word.length; i++) {
-        //loop through word, if index contains letter, update word visual
-        if (word[i] === letter) {
-          letterCheckCopy[i] = true;
-        }
-      }
-      setLetterCheck(letterCheckCopy);
-    }
-  }
-
-  useEffect(() => {
-    if (!letterCheck.includes(false)) {
-      setGameOver(true);
-      setGameState("You win!!");
-      disableGameButtons();
-    }
-  }, [letterCheck, gameOver]);
-
   return (
     <>
       <HangingMan badGuessCount={badGuessCount} />
       <WordBox word={word} letterCheck={letterCheck} gameState={gameState} />
-      <Keyboard checkLetterInWord={checkLetterInWord} resetGame={resetGame} />
+      <Keyboard
+        checkLetterInWord={checkLetterInWord}
+        resetGame={resetGame}
+        setGameState={setGameState}
+        gameState={gameState}
+      />
     </>
   );
 }

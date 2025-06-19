@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import Key from "./Keys";
 
-function Keyboard({ checkLetterInWord, resetGame }) {
+function Keyboard({ checkLetterInWord, resetGame, setGameState, gameState }) {
   return (
-    <div className="keyboard">
+    <div className="keyboard" key={gameState}>
       <section>
         <Key letter={"Q"} checkLetterInWord={checkLetterInWord} />
         <Key letter={"W"} checkLetterInWord={checkLetterInWord} />
