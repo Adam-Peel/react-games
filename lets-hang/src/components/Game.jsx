@@ -14,6 +14,7 @@ function GameBox() {
   let [badGuessLimit, setBadGuessLimit] = useState(9);
   let [badGuessCount, setBadGuessCount] = useState(0);
   let [gameState, setGameState] = useState("Let's play");
+  let [resetCounter, setResetCounter] = useState(0);
 
   function disableGameButtons() {
     const buttons = document.getElementsByClassName("inputButton");
@@ -59,6 +60,7 @@ function GameBox() {
     setLetterCheck(initialLetterCheck());
     setBadGuessCount(0);
     setGameState("Let's play");
+    setResetCounter((prev) => prev + 1);
     const buttons = document.getElementsByClassName("inputButton");
     const buttonsArray = Array.from(buttons);
     buttonsArray.forEach((button) => {
@@ -75,6 +77,7 @@ function GameBox() {
         resetGame={resetGame}
         setGameState={setGameState}
         gameState={gameState}
+        resetCounter={resetCounter}
       />
     </>
   );

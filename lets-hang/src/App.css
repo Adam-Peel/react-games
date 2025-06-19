@@ -20,7 +20,8 @@
 }
 
 .hidden {
-  color: rgb(26, 26, 26);
+  color: rgb(26, 26, 26) !important;
+  background-color: rgb(26, 26, 26) !important;
 }
 
 .logo {
