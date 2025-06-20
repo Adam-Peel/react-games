@@ -6,44 +6,9 @@ function Keyboard({
   resetGame,
   setGameState,
   resetCounter,
-  checkWord,
 }) {
-  const [guessedWord, setGuessedWord] = useState("");
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (checkWord(guessedWord)) {
-      const letters = document.getElementsByClassName("letter");
-      const lettersArray = Array.from(letters);
-      lettersArray.forEach((letter) => {
-        letter.classList.remove("hidden");
-        letter.classList.add("visible");
-      });
-      return;
-    }
-    setGameState("Keep guessing...");
-    setGuessedWord("");
-  }
-
   return (
     <section className="keyboard" key={resetCounter}>
-      <div className="wordsearch">
-        <form onSubmit={handleSubmit}>
-          <span>
-            <input
-              type="text"
-              placeholder="guess whole word..."
-              className="word-input"
-              onChange={(event) => setGuessedWord(event.target.value)}
-            ></input>
-          </span>
-          <span>
-            <button className="wordsearch-button" type="submit">
-              ❔
-            </button>
-          </span>
-        </form>
-      </div>
       <div className="keys">
         <Key
           setGameState={setGameState}

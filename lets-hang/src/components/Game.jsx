@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import HangingMan from "./HangingMan";
 import WordBox from "./WordBox";
 import Keyboard from "./Keyboard";
+import Searchbar from "./Searchbar";
 
 function GameBox() {
   const [inputWord, setWord] = useState("hangman");
@@ -89,6 +90,11 @@ function GameBox() {
     <>
       <HangingMan badGuessCount={badGuessCount} />
       <WordBox word={word} letterCheck={letterCheck} gameState={gameState} />
+      <Searchbar
+        checkWord={checkWord}
+        setBadGuessCount={setBadGuessCount}
+        setGameState={setGameState}
+      />
       <Keyboard
         checkLetterInWord={checkLetterInWord}
         resetGame={resetGame}
