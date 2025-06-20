@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function Key({ letter, checkLetterInWord }) {
+function Key({ setGameState, letter, checkLetterInWord }) {
   const [isDisabled, setIsDisabled] = useState(false);
 
   function handleClick(letter) {
-    console.log("Key pressed");
     const propLetter = letter.toLowerCase();
     checkLetterInWord(propLetter);
     setIsDisabled(true);
+    setGameState("Keep guessing...");
   }
 
   return (

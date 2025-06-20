@@ -5,40 +5,143 @@ function Keyboard({
   checkLetterInWord,
   resetGame,
   setGameState,
-  gameState,
   resetCounter,
 }) {
   return (
     <div className="keyboard" key={resetCounter}>
       <section>
-        <Key letter={"Q"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"W"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"E"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"R"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"T"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"Y"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"U"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"I"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"O"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"P"} checkLetterInWord={checkLetterInWord} />
+        <Key
+          setGameState={setGameState}
+          letter={"Q"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"W"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"E"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"R"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"T"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"Y"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"U"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"I"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"O"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"P"}
+          checkLetterInWord={checkLetterInWord}
+        />
         <br />
-        <Key letter={"A"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"S"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"D"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"F"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"G"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"H"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"J"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"K"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"L"} checkLetterInWord={checkLetterInWord} />
+        <Key
+          setGameState={setGameState}
+          letter={"A"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"S"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"D"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"F"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"G"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"H"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"J"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"K"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"L"}
+          checkLetterInWord={checkLetterInWord}
+        />
         <br />
-        <Key letter={"Z"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"X"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"C"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"V"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"B"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"N"} checkLetterInWord={checkLetterInWord} />
-        <Key letter={"M"} checkLetterInWord={checkLetterInWord} />
+        <Key
+          setGameState={setGameState}
+          letter={"Z"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"X"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"C"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"V"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"B"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"N"}
+          checkLetterInWord={checkLetterInWord}
+        />
+        <Key
+          setGameState={setGameState}
+          letter={"M"}
+          checkLetterInWord={checkLetterInWord}
+        />
       </section>
       <section>
         <button className="resetButton" onClick={resetGame}>

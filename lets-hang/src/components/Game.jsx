@@ -76,7 +76,6 @@ function GameBox() {
         checkLetterInWord={checkLetterInWord}
         resetGame={resetGame}
         setGameState={setGameState}
-        gameState={gameState}
         resetCounter={resetCounter}
       />
     </>
