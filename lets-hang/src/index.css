@@ -35,6 +35,36 @@ h1 {
   line-height: 1.1;
 }
 
+.blockArray {
+  height: 24px;
+}
+
+.wordsearch {
+  position: relative;
+}
+
+.word-input {
+  height: 40.19px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  width: 100%;
+}
+
+.wordsearch button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

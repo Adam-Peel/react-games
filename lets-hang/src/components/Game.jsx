@@ -4,7 +4,8 @@ import WordBox from "./WordBox";
 import Keyboard from "./Keyboard";
 
 function GameBox() {
-  const inputWord = "TAUTOLOGY";
+  const [inputWord, setWord] = useState("hangman");
+
   const word = inputWord.toLowerCase();
   function initialLetterCheck() {
     return Array(word.length).fill(false);
@@ -16,24 +17,39 @@ function GameBox() {
   let [gameState, setGameState] = useState("Let's play");
   let [resetCounter, setResetCounter] = useState(0);
 
-  function disableGameButtons() {
+  function disableGameButtons(bool) {
     const buttons = document.getElementsByClassName("inputButton");
     const buttonsArray = Array.from(buttons);
     buttonsArray.forEach((button) => {
-      button.disabled = true;
+      button.disabled = bool;
     });
+  }
+
+  function checkWord(wordToCheck) {
+    if (wordToCheck === inputWord) {
+      setGameState("You win!!");
+      disableGameButtons(true);
+      setBadGuessCount(0);
+      return true;
+    } else {
+      setBadGuessCount((prev) => {
+        prev + 1;
+      });
+    }
+
+    if (badGuessCount === badGuessLimit) {
+      setGameState("Game Over! The word was: " + word);
+      disableGameButtons(true);
+    }
   }
 
   function checkLetterInWord(letter) {
     if (!word.includes(letter)) {
-      //bad letter, poor mr hangman
       setBadGuessCount((badGuessCount) => {
         const newCount = badGuessCount + 1;
         if (newCount === badGuessLimit) {
-          //Game over point, handle end gameover
-          // display correct word
           setGameState("Game Over! The word was: " + word);
-          disableGameButtons();
+          disableGameButtons(true);
         }
         return newCount;
       });
@@ -41,7 +57,6 @@ function GameBox() {
     }
     const letterCheckCopy = [...letterCheck];
     for (let i = 0; i < word.length; i++) {
-      //loop through word, if index contains letter, update word visual
       if (word[i] === letter) {
         letterCheckCopy[i] = true;
       }
@@ -52,20 +67,22 @@ function GameBox() {
   useEffect(() => {
     if (!letterCheck.includes(false)) {
       setGameState("You win!!");
-      disableGameButtons();
+      disableGameButtons(true);
     }
   }, [letterCheck]);
 
   function resetGame() {
+    const letters = document.getElementsByClassName("letter");
+    const lettersArray = Array.from(letters);
+    lettersArray.map((letter) => {
+      letter.classList.remove("visible");
+      letter.classList.add("hidden");
+    });
     setLetterCheck(initialLetterCheck());
     setBadGuessCount(0);
     setGameState("Let's play");
     setResetCounter((prev) => prev + 1);
-    const buttons = document.getElementsByClassName("inputButton");
-    const buttonsArray = Array.from(buttons);
-    buttonsArray.forEach((button) => {
-      button.disabled = false;
-    });
+    disableGameButtons(false);
   }
 
   return (
@@ -77,6 +94,7 @@ function GameBox() {
         resetGame={resetGame}
         setGameState={setGameState}
         resetCounter={resetCounter}
+        checkWord={checkWord}
       />
     </>
   );

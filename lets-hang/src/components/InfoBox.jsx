@@ -1,6 +1,6 @@
 function InfoBox({ gameState }) {
   return (
-    <div>
+    <div className="infobox">
       <h2 id="infoBoxText">{gameState}</h2>
     </div>
   );
