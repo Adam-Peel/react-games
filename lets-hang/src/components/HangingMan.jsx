@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function HangingMan({ badGuessCount }) {
+function HangingMan({ badGuessCount, word, setGameState, disableGameButtons }) {
   const [blockArray, setBlockArray] = useState([]);
 
   useEffect(() => {
@@ -13,8 +13,11 @@ function HangingMan({ badGuessCount }) {
           blocks.push("🟠");
         } else if (i < 8) {
           blocks.push("🔴");
-        } else {
+        } else if (i === 8) {
           blocks.push("💀");
+          setGameState("Game Over! The word was: " + word);
+          disableGameButtons(true);
+          document.getElementById("word-form").disabled = true;
         }
       }
       return blocks;

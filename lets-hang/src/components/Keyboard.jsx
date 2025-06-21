@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Key from "./Keys";
 
 function Keyboard({

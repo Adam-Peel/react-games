@@ -85,11 +85,17 @@ function GameBox() {
     setResetCounter((prev) => prev + 1);
     disableGameButtons(false);
     document.getElementById("word-form").value = "";
+    document.getElementById("word-form").disabled = false;
   }
 
   return (
     <>
-      <HangingMan badGuessCount={badGuessCount} />
+      <HangingMan
+        badGuessCount={badGuessCount}
+        word={word}
+        setGameState={setGameState}
+        disableGameButtons={disableGameButtons}
+      />
       <WordBox word={word} letterCheck={letterCheck} gameState={gameState} />
       <Searchbar
         checkWord={checkWord}
@@ -102,7 +108,6 @@ function GameBox() {
         resetGame={resetGame}
         setGameState={setGameState}
         resetCounter={resetCounter}
-        checkWord={checkWord}
       />
     </>
   );
