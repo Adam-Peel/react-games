@@ -1,6 +1,11 @@
-function Header({ setAwaitingAPI, wordLength, setWordLength }) {
+import { useState } from "react";
+
+function Header({ badGuessLimit, setAwaitingAPI, setBadGuessLimit }) {
+  const [difficultyLevel, setDifficultyLevel] = useState("7");
+
   function handleChange(event) {
-    setWordLength(event.target.value);
+    setBadGuessLimit(Number(event.target.value));
+    setDifficultyLevel(event.target.value);
   }
 
   return (
@@ -10,20 +15,25 @@ function Header({ setAwaitingAPI, wordLength, setWordLength }) {
       </div>
       <div id="header-buttons">
         <span>
+          <label>Set difficulty:</label>
           <select
-            value={wordLength}
-            name="difficulty"
+            id="difficulty"
             onChange={handleChange}
             className="difficulty-selector"
           >
-            <option value="7">Set difficulty: defaults to medium</option>
-            <option value="5">Easy</option>
+            <option value="9">Easy</option>
             <option value="7">Medium</option>
-            <option value="11">Hard</option>
+            <option value="5">Hard</option>
           </select>
         </span>
         <span>
-          <button id="new-word-button" onClick={() => setAwaitingAPI(true)}>
+          <button
+            id="new-word-button"
+            onClick={() => {
+              setBadGuessLimit(Number(difficultyLevel));
+              setAwaitingAPI(true);
+            }}
+          >
             Get new word
           </button>
         </span>

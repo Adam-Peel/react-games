@@ -5,18 +5,39 @@ import GameBox from "./components/Game";
 
 function App() {
   const [awaitingAPI, setAwaitingAPI] = useState(false);
-  const [wordLength, setWordLength] = useState(7);
   const [gameState, setGameState] = useState("Let's play");
   const [gameWord, setGameWord] = useState("banana");
+  const [gameWordClue, setGameWordClue] = useState("One of your 5 a day");
+  const [badGuessLimit, setBadGuessLimit] = useState(9);
 
-  async function fetchWord(wordLength) {
+  function disableGameButtons(bool) {
+    const buttons = document.getElementsByClassName("inputButton");
+    const buttonsArray = Array.from(buttons);
+    buttonsArray.forEach((button) => {
+      button.disabled = bool;
+    });
+  }
+
+  async function fetchWord() {
     try {
-      const word = await fetch(
-        `https://random-word.ryanrk.com/api/en/word/random/?length=${wordLength}`
+      const wordObject = await fetch(
+        `https://random-words-api.vercel.app/word`
       );
-      const formattedWord = await word.json();
-      setGameWord(formattedWord);
+      const formattedWord = await wordObject.json();
+      const word = formattedWord.word.toLowerCase();
+      const clue = formattedWord.definition;
+      setGameWordClue(clue);
+      setGameWord(word);
       setGameState("Let's play");
+      disableGameButtons(false);
+      document.getElementById("word-form").value = "";
+      document.getElementById("word-form").disabled = false;
+      const letters = document.getElementsByClassName("letter");
+      const lettersArray = Array.from(letters);
+      lettersArray.map((letter) => {
+        letter.classList.remove("visible");
+        letter.classList.add("hidden");
+      });
       setAwaitingAPI(false);
     } catch (err) {
       setGameState("Sorry, there was an error retrieving a word");
@@ -27,21 +48,24 @@ function App() {
 
   useEffect(() => {
     if (awaitingAPI) {
-      fetchWord(wordLength);
+      fetchWord();
     }
-  }, [awaitingAPI, wordLength]);
+  }, [awaitingAPI, badGuessLimit]);
 
   return (
     <>
       <div className="app">
         <Header
+          badGuessLimit={badGuessLimit}
           setAwaitingAPI={setAwaitingAPI}
-          wordLength={wordLength}
-          setWordLength={setWordLength}
+          setBadGuessLimit={setBadGuessLimit}
         />
         <GameBox
           key={gameWord}
+          badGuessLimit={badGuessLimit}
+          setBadGuessLimit={setBadGuessLimit}
           gameWord={gameWord}
+          gameWordClue={gameWordClue}
           gameState={gameState}
           setGameState={setGameState}
         />

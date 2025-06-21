@@ -4,13 +4,17 @@ import WordBox from "./WordBox";
 import Keyboard from "./Keyboard";
 import Searchbar from "./Searchbar";
 
-function GameBox({ gameWord, gameState, setGameState }) {
-  let [inputWord, setWord] = useState(gameWord[0]);
-
-  const [badGuessLimit, setBadGuessLimit] = useState(9);
-  const [badGuessCount, setBadGuessCount] = useState(0);
+function GameBox({
+  badGuessLimit,
+  setBadGuessLimit,
+  gameWord,
+  gameWordClue,
+  gameState,
+  setGameState,
+}) {
+  let [inputWord, setWord] = useState(gameWord);
   const [resetCounter, setResetCounter] = useState(0);
-
+  console.log(badGuessLimit);
   const word = inputWord.toLowerCase();
   function initialLetterCheck() {
     return Array(word.length).fill(false);
@@ -29,29 +33,23 @@ function GameBox({ gameWord, gameState, setGameState }) {
     if (wordToCheck === inputWord) {
       setGameState("You win!!");
       disableGameButtons(true);
-      setBadGuessCount(0);
       return true;
     } else {
-      setBadGuessCount((prev) => {
-        prev + 1;
+      setBadGuessLimit((prev) => {
+        prev - 1;
       });
-    }
-
-    if (badGuessCount === badGuessLimit) {
-      setGameState("Game Over! The word was: " + word);
-      disableGameButtons(true);
     }
   }
 
   function checkLetterInWord(letter) {
     if (!word.includes(letter)) {
-      setBadGuessCount((badGuessCount) => {
-        const newCount = badGuessCount + 1;
-        if (newCount === badGuessLimit) {
+      setBadGuessLimit((badGuessCount) => {
+        const newLimit = badGuessCount - 1;
+        if (newLimit === 0) {
           setGameState("Game Over! The word was: " + word);
           disableGameButtons(true);
         }
-        return newCount;
+        return newLimit;
       });
       return;
     }
@@ -71,26 +69,10 @@ function GameBox({ gameWord, gameState, setGameState }) {
     }
   }, [letterCheck]);
 
-  function resetGame() {
-    const letters = document.getElementsByClassName("letter");
-    const lettersArray = Array.from(letters);
-    lettersArray.map((letter) => {
-      letter.classList.remove("visible");
-      letter.classList.add("hidden");
-    });
-    setLetterCheck(initialLetterCheck());
-    setBadGuessCount(0);
-    setGameState("Let's play");
-    setResetCounter((prev) => prev + 1);
-    disableGameButtons(false);
-    document.getElementById("word-form").value = "";
-    document.getElementById("word-form").disabled = false;
-  }
-
   return (
     <>
       <HangingMan
-        badGuessCount={badGuessCount}
+        badGuessLimit={badGuessLimit}
         word={word}
         setGameState={setGameState}
         disableGameButtons={disableGameButtons}
@@ -98,13 +80,12 @@ function GameBox({ gameWord, gameState, setGameState }) {
       <WordBox word={word} letterCheck={letterCheck} gameState={gameState} />
       <Searchbar
         checkWord={checkWord}
-        setBadGuessCount={setBadGuessCount}
+        setBadGuessLimit={setBadGuessLimit}
         setGameState={setGameState}
-        badGuessCount={badGuessCount}
+        badGuessLimit={badGuessLimit}
       />
       <Keyboard
         checkLetterInWord={checkLetterInWord}
-        resetGame={resetGame}
         setGameState={setGameState}
         resetCounter={resetCounter}
       />

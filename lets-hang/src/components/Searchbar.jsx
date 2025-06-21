@@ -2,15 +2,15 @@ import { useState } from "react";
 
 function Searchbar({
   checkWord,
-  setBadGuessCount,
+  setBadGuessLimit,
   setGameState,
-  badGuessCount,
+  badGuessLimit,
 }) {
   const [guessedWord, setGuessedWord] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    let guesses = badGuessCount;
+    let guesses = badGuessLimit;
     if (checkWord(guessedWord)) {
       const letters = document.getElementsByClassName("letter");
       document.getElementById("word-form").disabled = true;
@@ -23,7 +23,7 @@ function Searchbar({
     }
     setGameState("Keep guessing...");
     setGuessedWord("");
-    setBadGuessCount(guesses + 1);
+    setBadGuessLimit(guesses - 1);
     document.getElementById("word-form").value = "";
   }
 
