@@ -84,6 +84,7 @@ function GameBox() {
     setGameState("Let's play");
     setResetCounter((prev) => prev + 1);
     disableGameButtons(false);
+    document.getElementById("word-form").value = "";
   }
 
   return (

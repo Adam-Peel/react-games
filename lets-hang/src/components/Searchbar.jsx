@@ -23,6 +23,7 @@ function Searchbar({
     setGameState("Keep guessing...");
     setGuessedWord("");
     setBadGuessCount(guesses + 1);
+    document.getElementById("word-form").value = "";
   }
 
   return (
@@ -34,6 +35,7 @@ function Searchbar({
             placeholder="guess whole word..."
             className="word-input"
             onChange={(event) => setGuessedWord(event.target.value)}
+            id="word-form"
           ></input>
         </span>
         <span>
