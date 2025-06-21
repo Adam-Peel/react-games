@@ -94,6 +94,7 @@ function GameBox() {
         checkWord={checkWord}
         setBadGuessCount={setBadGuessCount}
         setGameState={setGameState}
+        badGuessCount={badGuessCount}
       />
       <Keyboard
         checkLetterInWord={checkLetterInWord}

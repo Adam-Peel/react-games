@@ -1,10 +1,16 @@
 import { useState } from "react";
 
-function Searchbar({ checkWord, setBadGuessCount, setGameState }) {
+function Searchbar({
+  checkWord,
+  setBadGuessCount,
+  setGameState,
+  badGuessCount,
+}) {
   const [guessedWord, setGuessedWord] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
+    let guesses = badGuessCount;
     if (checkWord(guessedWord)) {
       const letters = document.getElementsByClassName("letter");
       const lettersArray = Array.from(letters);
@@ -16,10 +22,7 @@ function Searchbar({ checkWord, setBadGuessCount, setGameState }) {
     }
     setGameState("Keep guessing...");
     setGuessedWord("");
-    setBadGuessCount((prev) => {
-      console.log(prev);
-      prev + 1;
-    });
+    setBadGuessCount(guesses + 1);
   }
 
   return (
