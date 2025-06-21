@@ -13,6 +13,7 @@ function Searchbar({
     let guesses = badGuessCount;
     if (checkWord(guessedWord)) {
       const letters = document.getElementsByClassName("letter");
+      document.getElementById("word-form").disabled = true;
       const lettersArray = Array.from(letters);
       lettersArray.forEach((letter) => {
         letter.classList.remove("hidden");

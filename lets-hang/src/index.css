@@ -44,6 +44,11 @@ h1 {
 }
 
 .word-input {
+  width: 100%;
+}
+
+.word-input,
+.difficulty-selector {
   height: 40.19px;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -53,7 +58,6 @@ h1 {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-  width: 100%;
 }
 
 .wordsearch button {

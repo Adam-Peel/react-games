@@ -4,19 +4,18 @@ import WordBox from "./WordBox";
 import Keyboard from "./Keyboard";
 import Searchbar from "./Searchbar";
 
-function GameBox() {
-  const [inputWord, setWord] = useState("hangman");
+function GameBox({ gameWord, gameState, setGameState }) {
+  let [inputWord, setWord] = useState(gameWord[0]);
+
+  const [badGuessLimit, setBadGuessLimit] = useState(9);
+  const [badGuessCount, setBadGuessCount] = useState(0);
+  const [resetCounter, setResetCounter] = useState(0);
 
   const word = inputWord.toLowerCase();
   function initialLetterCheck() {
     return Array(word.length).fill(false);
   }
-
-  let [letterCheck, setLetterCheck] = useState(initialLetterCheck());
-  let [badGuessLimit, setBadGuessLimit] = useState(9);
-  let [badGuessCount, setBadGuessCount] = useState(0);
-  let [gameState, setGameState] = useState("Let's play");
-  let [resetCounter, setResetCounter] = useState(0);
+  const [letterCheck, setLetterCheck] = useState(initialLetterCheck());
 
   function disableGameButtons(bool) {
     const buttons = document.getElementsByClassName("inputButton");
