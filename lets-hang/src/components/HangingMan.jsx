@@ -10,6 +10,7 @@ function HangingMan({ badGuessLimit, word, setGameState, disableGameButtons }) {
       if (badGuessLimit === 0) {
         blocks.push("💀");
         setGameState("Game Over! The word was: " + word);
+        document.getElementById("difficulty").disabled = false;
         disableGameButtons(true);
         document.getElementById("word-form").disabled = true;
       }

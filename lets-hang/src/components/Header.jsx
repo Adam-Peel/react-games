@@ -31,6 +31,7 @@ function Header({ badGuessLimit, setAwaitingAPI, setBadGuessLimit }) {
             id="new-word-button"
             onClick={() => {
               setBadGuessLimit(Number(difficultyLevel));
+              document.getElementById("difficulty").disabled = true;
               setAwaitingAPI(true);
             }}
           >

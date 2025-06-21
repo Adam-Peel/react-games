@@ -13,7 +13,6 @@ function GameBox({
   setGameState,
 }) {
   let [inputWord, setWord] = useState(gameWord);
-  const [resetCounter, setResetCounter] = useState(0);
   console.log(badGuessLimit);
   const word = inputWord.toLowerCase();
   function initialLetterCheck() {
@@ -33,6 +32,7 @@ function GameBox({
     if (wordToCheck === inputWord) {
       setGameState("You win!!");
       disableGameButtons(true);
+      document.getElementById("difficulty").disabled = false;
       return true;
     } else {
       setBadGuessLimit((prev) => {
@@ -47,6 +47,7 @@ function GameBox({
         const newLimit = badGuessCount - 1;
         if (newLimit === 0) {
           setGameState("Game Over! The word was: " + word);
+          document.getElementById("difficulty").disabled = false;
           disableGameButtons(true);
         }
         return newLimit;
@@ -87,7 +88,6 @@ function GameBox({
       <Keyboard
         checkLetterInWord={checkLetterInWord}
         setGameState={setGameState}
-        resetCounter={resetCounter}
       />
     </>
   );
