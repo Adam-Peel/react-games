@@ -12,7 +12,7 @@ function App() {
   async function fetchWord(wordLength) {
     try {
       const word = await fetch(
-        `https://random-word-api.vercel.app/api?words=1&length=${wordLength}`
+        `https://random-word.ryanrk.com/api/en/word/random/?length=${wordLength}`
       );
       const formattedWord = await word.json();
       setGameWord(formattedWord);

@@ -19,7 +19,7 @@ function Header({ setAwaitingAPI, wordLength, setWordLength }) {
             <option value="7">Set difficulty: defaults to medium</option>
             <option value="5">Easy</option>
             <option value="7">Medium</option>
-            <option value="9">Hard</option>
+            <option value="11">Hard</option>
           </select>
         </span>
         <span>
