@@ -42,7 +42,7 @@ function GameBox({
       disableGameButtons(true);
       document.getElementById("difficulty").disabled = false;
       setCumulativeGameScore((prev) => {
-        prev + scoreMultiplier;
+        return prev + scoreMultiplier;
       });
       return true;
     } else {
@@ -81,7 +81,7 @@ function GameBox({
       disableGameButtons(true);
       document.getElementById("difficulty").disabled = false;
       setCumulativeGameScore((prev) => {
-        prev + scoreMultiplier;
+        return prev + scoreMultiplier;
       });
     }
   }, [letterCheck]);

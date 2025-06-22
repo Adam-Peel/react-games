@@ -33,7 +33,7 @@ function HangingMan({ badGuessLimit, word, setGameState, disableGameButtons }) {
 
   return (
     <div className="blockArray">
-      <h3>
+      <h3 id="info-display">
         You have: {badGuessLimit} guesses left: {blockArray}
       </h3>
     </div>

@@ -11,7 +11,7 @@ function App() {
   const [gameState, setGameState] = useState("Let's play");
   const [gameWord, setGameWord] = useState("mango");
   const [gameWordClue, setGameWordClue] = useState("One of your 5 a day");
-  const [badGuessLimit, setBadGuessLimit] = useState(9);
+  const [badGuessLimit, setBadGuessLimit] = useState(10);
   const [scoreMultiplier, setScoreMultiplier] = useState(0);
   const [gameCount, setGameCount] = useState(0);
   const [winCount, setWinCount] = useState(0);
@@ -26,6 +26,10 @@ function App() {
   }
 
   async function fetchWord() {
+    if (gameCount > 0) {
+      document.getElementById("word-form").value = "";
+      document.getElementById("word-form").disabled = false;
+    }
     try {
       const wordObject = await fetch(
         `https://random-words-api.vercel.app/word`
@@ -38,8 +42,6 @@ function App() {
       setGameState("Let's play");
       setGameCount((prev) => prev + 1);
       disableGameButtons(false);
-      document.getElementById("word-form").value = "";
-      document.getElementById("word-form").disabled = false;
       const letters = document.getElementsByClassName("letter");
       const lettersArray = Array.from(letters);
       lettersArray.map((letter) => {
@@ -54,9 +56,9 @@ function App() {
       });
       setAwaitingAPI(false);
     } catch (err) {
+      console.log(err);
       setGameState("Sorry, there was an error retrieving a word");
       setAwaitingAPI(false);
-      console.log(err);
     }
   }
 
@@ -79,6 +81,7 @@ function App() {
                   setAwaitingAPI={setAwaitingAPI}
                   setBadGuessLimit={setBadGuessLimit}
                   setScoreMultiplier={setScoreMultiplier}
+                  setGameState={setGameState}
                 />
                 <GameBox
                   key={gameWord}

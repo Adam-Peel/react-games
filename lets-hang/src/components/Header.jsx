@@ -1,16 +1,15 @@
 import { useState } from "react";
 
 function Header({ setAwaitingAPI, setBadGuessLimit, setScoreMultiplier }) {
-  const [difficultyLevel, setDifficultyLevel] = useState(10);
-
   function handleChange(event) {
+    console.log(event.target.value);
     setBadGuessLimit(Number(event.target.value));
-    setDifficultyLevel(Number(event.target.value));
     setScoreMultiplier(10 / Number(event.target.value));
+    document.getElementById("info-display").textContent = "";
   }
 
   return (
-    <header key={difficultyLevel}>
+    <header>
       <div id="header-banner">
         <h1>Let's Hang! </h1>
       </div>
@@ -21,7 +20,6 @@ function Header({ setAwaitingAPI, setBadGuessLimit, setScoreMultiplier }) {
             id="difficulty"
             onChange={handleChange}
             className="difficulty-selector"
-            key={difficultyLevel}
           >
             <option value="10">Easy</option>
             <option value="8">Medium</option>

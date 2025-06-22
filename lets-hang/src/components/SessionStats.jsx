@@ -1,6 +1,6 @@
 function SessionStats({ gameCount, winCount, cumulativeGameScore }) {
   function calculateScore(gameCount, cumulativeGameScore) {
-    const score = (gameCount / cumulativeGameScore).toFixed(2);
+    const score = (cumulativeGameScore / gameCount).toFixed(2);
     if (isNaN(score) || !isFinite(score)) {
       return "-";
     } else {
