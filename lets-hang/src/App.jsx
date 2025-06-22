@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import GameBox from "./components/Game";
 import About from "./components/About";
+import Footer from "./components/Footer";
 
 function App() {
   const [awaitingAPI, setAwaitingAPI] = useState(false);
@@ -82,6 +83,7 @@ function App() {
                   gameState={gameState}
                   setGameState={setGameState}
                 />
+                <Footer />
               </>
             }
           />

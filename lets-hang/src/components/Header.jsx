@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router";
 
 function Header({ badGuessLimit, setAwaitingAPI, setBadGuessLimit }) {
   const [difficultyLevel, setDifficultyLevel] = useState("7");
@@ -13,9 +12,6 @@ function Header({ badGuessLimit, setAwaitingAPI, setBadGuessLimit }) {
     <header>
       <div id="header-banner">
         <h1>Let's Hang! </h1>
-        <p>
-          <Link to="/about">For instructions on how to play click here ℹ️</Link>
-        </p>
       </div>
       <div id="header-buttons">
         <span>
