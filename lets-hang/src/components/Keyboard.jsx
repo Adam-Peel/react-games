@@ -1,12 +1,6 @@
 import Key from "./Keys";
 
-function Keyboard({
-  checkLetterInWord,
-  setGameState,
-  // resetCounter,
-  gameWordClue,
-}) {
-  console.log(gameWordClue);
+function Keyboard({ checkLetterInWord, setGameState, gameWordClue }) {
   return (
     <section className="keyboard">
       <div className="keys">

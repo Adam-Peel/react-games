@@ -12,10 +12,8 @@ function GameBox({
   gameState,
   setGameState,
 }) {
-  let [inputWord, setWord] = useState(gameWord);
-  const [showClue, setShowClue] = useState(false);
-  console.log(badGuessLimit);
-  const word = inputWord.toLowerCase();
+  let [word, setWord] = useState(gameWord);
+
   function initialLetterCheck() {
     return Array(word.length).fill(false);
   }
@@ -30,7 +28,7 @@ function GameBox({
   }
 
   function checkWord(wordToCheck) {
-    if (wordToCheck === inputWord) {
+    if (wordToCheck === word) {
       setGameState("You win!!");
       disableGameButtons(true);
       document.getElementById("difficulty").disabled = false;
