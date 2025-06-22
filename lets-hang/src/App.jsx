@@ -38,6 +38,12 @@ function App() {
         letter.classList.remove("visible");
         letter.classList.add("hidden");
       });
+      const inputButtons = document.getElementsByClassName("inputButton");
+      const inputButtonArray = Array.from(inputButtons);
+      inputButtonArray.forEach((button) => {
+        button.classList.remove("selected");
+        button.classList.add("unselected");
+      });
       setAwaitingAPI(false);
     } catch (err) {
       setGameState("Sorry, there was an error retrieving a word");

@@ -13,6 +13,7 @@
 
 .selected {
   background-color: red;
+  color: white;
 }
 
 .visible {
