@@ -1,15 +1,16 @@
 import { useState } from "react";
 
-function Header({ badGuessLimit, setAwaitingAPI, setBadGuessLimit }) {
-  const [difficultyLevel, setDifficultyLevel] = useState("7");
+function Header({ setAwaitingAPI, setBadGuessLimit, setScoreMultiplier }) {
+  const [difficultyLevel, setDifficultyLevel] = useState(10);
 
   function handleChange(event) {
     setBadGuessLimit(Number(event.target.value));
-    setDifficultyLevel(event.target.value);
+    setDifficultyLevel(Number(event.target.value));
+    setScoreMultiplier(10 / Number(event.target.value));
   }
 
   return (
-    <header>
+    <header key={difficultyLevel}>
       <div id="header-banner">
         <h1>Let's Hang! </h1>
       </div>
@@ -20,17 +21,17 @@ function Header({ badGuessLimit, setAwaitingAPI, setBadGuessLimit }) {
             id="difficulty"
             onChange={handleChange}
             className="difficulty-selector"
+            key={difficultyLevel}
           >
-            <option value="9">Easy</option>
-            <option value="7">Medium</option>
-            <option value="5">Hard</option>
+            <option value="10">Easy</option>
+            <option value="8">Medium</option>
+            <option value="6">Hard</option>
           </select>
         </span>
         <span>
           <button
             id="new-word-button"
             onClick={() => {
-              setBadGuessLimit(Number(difficultyLevel));
               document.getElementById("difficulty").disabled = true;
               setAwaitingAPI(true);
             }}

@@ -4,7 +4,6 @@ function About() {
   return (
     <main>
       <section>
-        {/* TODO - Route to home page */}
         <Link to="/">
           <button>Go back to game</button>
         </Link>
@@ -27,9 +26,9 @@ function About() {
             within.
           </p>
           <ul>
-            <li>Easy: Gives 9 guesses</li>
-            <li>Medium: Gives 7 guesses</li>
-            <li>Hard: Gives 5 guesses</li>
+            <li>Easy: Gives 10 guesses</li>
+            <li>Medium: Gives 8 guesses</li>
+            <li>Hard: Gives 6 guesses</li>
           </ul>
         </div>
         <div>
@@ -55,10 +54,21 @@ function About() {
             the keyboard provides a given definition for each word.
           </p>
         </div>
-        {/* <div>
+        <div>
           <h2>Scoring</h2>
-          The scoring for this game is determined by how many
-        </div> */}
+          Scores accumulate for each game which is won, with the final score per
+          successful game based upon a multiplier, which reflects the difficulty
+          of the game level
+          <ul>
+            <li>1 point for an 'easy' game</li>
+            <li>1.25 points for a 'medium' game</li>
+            <li>1.33 for a 'hard' game</li>
+          </ul>
+          <p>
+            Total scores are accumulated, and this is then divided by the total
+            number of games played to give an average.
+          </p>
+        </div>
       </section>
     </main>
   );

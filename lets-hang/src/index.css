@@ -79,6 +79,15 @@ li {
   width: 100%;
 }
 
+table {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: rgb(83, 91, 242);
+  border-style: solid;
+  border-radius: 15px;
+}
+
 .word-input,
 .difficulty-selector {
   height: 40.19px;

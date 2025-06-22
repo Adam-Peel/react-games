@@ -11,7 +11,15 @@ function GameBox({
   gameWordClue,
   gameState,
   setGameState,
+  setWinCount,
+  setCumulativeGameScore,
+  gameCount,
+  scoreMultiplier,
 }) {
+  if (gameCount === 0) {
+    return <h3>Set the difficulty and get a new word to start playing!</h3>;
+  }
+
   let [word, setWord] = useState(gameWord);
 
   function initialLetterCheck() {
@@ -30,8 +38,12 @@ function GameBox({
   function checkWord(wordToCheck) {
     if (wordToCheck === word) {
       setGameState("You win!!");
+      setWinCount((prev) => prev + 1);
       disableGameButtons(true);
       document.getElementById("difficulty").disabled = false;
+      setCumulativeGameScore((prev) => {
+        prev + scoreMultiplier;
+      });
       return true;
     } else {
       setBadGuessLimit((prev) => {
@@ -65,8 +77,12 @@ function GameBox({
   useEffect(() => {
     if (!letterCheck.includes(false)) {
       setGameState("You win!!");
+      setWinCount((prev) => prev + 1);
       disableGameButtons(true);
       document.getElementById("difficulty").disabled = false;
+      setCumulativeGameScore((prev) => {
+        prev + scoreMultiplier;
+      });
     }
   }, [letterCheck]);
 

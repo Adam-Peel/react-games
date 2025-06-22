@@ -9,9 +9,13 @@ import Footer from "./components/Footer";
 function App() {
   const [awaitingAPI, setAwaitingAPI] = useState(false);
   const [gameState, setGameState] = useState("Let's play");
-  const [gameWord, setGameWord] = useState("banana");
+  const [gameWord, setGameWord] = useState("mango");
   const [gameWordClue, setGameWordClue] = useState("One of your 5 a day");
   const [badGuessLimit, setBadGuessLimit] = useState(9);
+  const [scoreMultiplier, setScoreMultiplier] = useState(0);
+  const [gameCount, setGameCount] = useState(0);
+  const [winCount, setWinCount] = useState(0);
+  const [cumulativeGameScore, setCumulativeGameScore] = useState(0);
 
   function disableGameButtons(bool) {
     const buttons = document.getElementsByClassName("inputButton");
@@ -32,6 +36,7 @@ function App() {
       setGameWordClue(clue);
       setGameWord(word);
       setGameState("Let's play");
+      setGameCount((prev) => prev + 1);
       disableGameButtons(false);
       document.getElementById("word-form").value = "";
       document.getElementById("word-form").disabled = false;
@@ -73,6 +78,7 @@ function App() {
                   badGuessLimit={badGuessLimit}
                   setAwaitingAPI={setAwaitingAPI}
                   setBadGuessLimit={setBadGuessLimit}
+                  setScoreMultiplier={setScoreMultiplier}
                 />
                 <GameBox
                   key={gameWord}
@@ -82,8 +88,16 @@ function App() {
                   gameWordClue={gameWordClue}
                   gameState={gameState}
                   setGameState={setGameState}
+                  setWinCount={setWinCount}
+                  setCumulativeGameScore={setCumulativeGameScore}
+                  gameCount={gameCount}
+                  scoreMultiplier={scoreMultiplier}
                 />
-                <Footer />
+                <Footer
+                  gameCount={gameCount}
+                  winCount={winCount}
+                  cumulativeGameScore={cumulativeGameScore}
+                />
               </>
             }
           />
