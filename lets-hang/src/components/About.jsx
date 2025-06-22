@@ -1,9 +1,13 @@
+import { Link } from "react-router";
+
 function About() {
   return (
     <main>
       <section>
         {/* TODO - Route to home page */}
-        <button>Go back to game</button>
+        <Link to="/">
+          <button>Go back to game</button>
+        </Link>
       </section>
       <section>
         <div>
@@ -21,17 +25,15 @@ function About() {
             does not change what word might be used in the game, but it sets the
             number of incorrect guesses that you are allowed to guess that word
             within.
-            <ul>
-              <li>Easy: Gives 9 guesses</li>
-              <li>Medium: Gives 7 guesses</li>
-              <li>Hard: Gives 5 guesses</li>
-            </ul>
           </p>
+          <ul>
+            <li>Easy: Gives 9 guesses</li>
+            <li>Medium: Gives 7 guesses</li>
+            <li>Hard: Gives 5 guesses</li>
+          </ul>
         </div>
         <div>
-          <p>
-            <h3>Game play</h3>
-          </p>
+          <h3>Game play</h3>
           <p>
             Within any one game, a player can either choose individual letters
             within a word, or try and guess the whole word itself.

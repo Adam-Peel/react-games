@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router";
 import "./App.css";
 import Header from "./components/Header";
 import GameBox from "./components/Game";
+import About from "./components/About";
 
 function App() {
   const [awaitingAPI, setAwaitingAPI] = useState(false);
@@ -61,20 +63,30 @@ function App() {
   return (
     <>
       <div className="app">
-        <Header
-          badGuessLimit={badGuessLimit}
-          setAwaitingAPI={setAwaitingAPI}
-          setBadGuessLimit={setBadGuessLimit}
-        />
-        <GameBox
-          key={gameWord}
-          badGuessLimit={badGuessLimit}
-          setBadGuessLimit={setBadGuessLimit}
-          gameWord={gameWord}
-          gameWordClue={gameWordClue}
-          gameState={gameState}
-          setGameState={setGameState}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header
+                  badGuessLimit={badGuessLimit}
+                  setAwaitingAPI={setAwaitingAPI}
+                  setBadGuessLimit={setBadGuessLimit}
+                />
+                <GameBox
+                  key={gameWord}
+                  badGuessLimit={badGuessLimit}
+                  setBadGuessLimit={setBadGuessLimit}
+                  gameWord={gameWord}
+                  gameWordClue={gameWordClue}
+                  gameState={gameState}
+                  setGameState={setGameState}
+                />
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </div>
     </>
   );
