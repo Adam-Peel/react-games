@@ -11,20 +11,6 @@
   background-color: orange;
 }
 
-.selected {
-  background-color: red;
-  color: white;
-}
-
-.visible {
-  background-color: green;
-}
-
-.hidden {
-  color: rgb(26, 26, 26) !important;
-  background-color: rgb(26, 26, 26) !important;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;

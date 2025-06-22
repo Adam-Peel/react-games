@@ -1,8 +1,14 @@
 import Key from "./Keys";
 
-function Keyboard({ checkLetterInWord, setGameState, resetCounter }) {
+function Keyboard({
+  checkLetterInWord,
+  setGameState,
+  // resetCounter,
+  gameWordClue,
+}) {
+  console.log(gameWordClue);
   return (
-    <section className="keyboard" key={resetCounter}>
+    <section className="keyboard">
       <div className="keys">
         <Key
           setGameState={setGameState}
@@ -136,6 +142,14 @@ function Keyboard({ checkLetterInWord, setGameState, resetCounter }) {
           letter={"M"}
           checkLetterInWord={checkLetterInWord}
         />
+      </div>
+      <div>
+        <button
+          className="clue-button"
+          onClick={() => setGameState(`Hint: ${gameWordClue}`)}
+        >
+          Show hint
+        </button>
       </div>
     </section>
   );
