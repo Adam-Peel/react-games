@@ -82,6 +82,7 @@ function App() {
                   setBadGuessLimit={setBadGuessLimit}
                   setScoreMultiplier={setScoreMultiplier}
                   setGameState={setGameState}
+                  gameCount={gameCount}
                 />
                 <GameBox
                   key={gameWord}

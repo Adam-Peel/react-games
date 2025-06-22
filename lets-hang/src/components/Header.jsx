@@ -1,17 +1,34 @@
 import { useState } from "react";
 
-function Header({ setAwaitingAPI, setBadGuessLimit, setScoreMultiplier }) {
+function Header({
+  setAwaitingAPI,
+  setBadGuessLimit,
+  setScoreMultiplier,
+  gameCount,
+}) {
   function handleChange(event) {
-    console.log(event.target.value);
     setBadGuessLimit(Number(event.target.value));
     setScoreMultiplier(10 / Number(event.target.value));
-    document.getElementById("info-display").textContent = "";
+    setDifficulty(Number(event.target.value));
+    if (gameCount > 0) {
+      document.getElementById("info-display").textContent = "";
+    }
   }
+
+  const [difficulty, setDifficulty] = useState(10);
 
   return (
     <header>
       <div id="header-banner">
-        <h1>Let's Hang! </h1>
+        <h1>
+          <u>H</u>&nbsp;
+          <u>a</u>&nbsp;
+          <u>n</u>&nbsp;
+          <u>g</u>&nbsp;
+          <u>&nbsp;&nbsp;</u>&nbsp;
+          <u>a</u>&nbsp;
+          <u>n</u>
+        </h1>
       </div>
       <div id="header-buttons">
         <span>
@@ -31,6 +48,7 @@ function Header({ setAwaitingAPI, setBadGuessLimit, setScoreMultiplier }) {
             id="new-word-button"
             onClick={() => {
               document.getElementById("difficulty").disabled = true;
+              setBadGuessLimit(difficulty);
               setAwaitingAPI(true);
             }}
           >
